@@ -25,7 +25,7 @@ const members = [
     role: 'LEADER / MAIN DANCER',
     birth: '2008. 11. 20',
     height: '182cm',
-    mbti: 'ENTJ',
+    mbti: 'ISTJ',
     image: '/images/bp_sihun.png',
     desc: '팀의 든든한 리더이자 퍼포먼스의 중심.',
     quote: '"우리의 청사진은 이제 시작이야."',
@@ -64,7 +64,7 @@ const members = [
     role: 'MAIN RAPPER',
     birth: '2007. 12. 25',
     height: '183cm',
-    mbti: 'ISTP',
+    mbti: 'ENTJ',
     image: '/images/bp_juhyeok.png',
     desc: '카리스마 넘치는 랩과 묵직한 존재감.',
     quote: '"말보다는 행동으로 보여줄게."',
@@ -145,7 +145,6 @@ export default function BlueprintPage() {
                 <p className="text-sm text-gray-500 mt-1">{member.role}</p>
               </button>
             ))}
-
           </div>
         </div>
 
@@ -252,12 +251,10 @@ export default function BlueprintPage() {
                     <span className="text-lg leading-none">↗</span>
                  </a>
               </div>
-
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 }
