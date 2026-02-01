@@ -108,7 +108,7 @@ export default function BlueprintPage() {
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed whitespace-pre-line transition-colors">
               <span className="font-bold text-black dark:text-white">"청춘(Blue)의 흔적(Print)을 남긴다"</span>
               <br /><br />
-              MK엔터테인먼트가 선보이는 첫 번째 보이그룹 <span className="text-black dark:text-white font-semibold">블루프린트(BLUEPRINT)</span>는 미완성이지만 무한한 가능성을 가진 10대들의 꿈과 설계를 상징합니다.
+              MK엔터테인먼트가 선보이는 첫 번째 보이그룹 <span className="text-black dark:text-white font-semibold">블루프린트(BLUEPRINT)</span>는 똥
             </p>
           </div>
           
