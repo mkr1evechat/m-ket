@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { HiX } from "react-icons/hi";
+import { HiX, HiPlay } from "react-icons/hi"; // 재생 아이콘 추가
 
+// 멤버 데이터
 const members = [
   {
     id: 'haru',
@@ -72,12 +73,33 @@ const members = [
   }
 ];
 
+// 앨범 데이터 (추가됨)
+const albums = [
+  {
+    id: 'zero',
+    title: 'ZERO: The First Print',
+    type: '1st Mini Album',
+    date: '2026. 01. 18',
+    cover: '/images/bp_album_1.png',
+    desc: '블루프린트의 시작을 알리는 데뷔 앨범. 0(Zero)에서 시작하여 무한대로 뻗어나갈 소년들의 당찬 포부를 담았다.',
+    tracks: [
+      { num: '01', title: 'Blueprint (Intro)', isTitle: false },
+      { num: '02', title: 'ZERO', isTitle: true }, // 타이틀곡
+      { num: '03', title: 'Runway', isTitle: false },
+      { num: '04', title: 'Sketch', isTitle: false },
+      { num: '05', title: 'Our Summer', isTitle: false },
+    ]
+  }
+];
+
 export default function BlueprintPage() {
   const [selectedMember, setSelectedMember] = useState<typeof members[0] | null>(null);
+  const [selectedAlbum, setSelectedAlbum] = useState<typeof albums[0] | null>(null);
 
   return (
     <div className="min-h-screen pb-20">
       
+      {/* 1. 히어로 섹션 */}
       <div className="relative w-full h-[60vh]">
         <Image
           src="/images/bp_hs.png" 
@@ -100,6 +122,7 @@ export default function BlueprintPage() {
 
       <div className="max-w-6xl mx-auto px-6 mt-12">
         
+        {/* 2. 소개글 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 uppercase border-l-4 border-blue-600 dark:border-red-600 pl-4 transition-colors">
@@ -108,7 +131,7 @@ export default function BlueprintPage() {
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed whitespace-pre-line transition-colors">
               <span className="font-bold text-black dark:text-white">"청춘(Blue)의 흔적(Print)을 남긴다"</span>
               <br /><br />
-              MK엔터테인먼트가 선보이는 첫 번째 보이그룹 <span className="text-black dark:text-white font-semibold">블루프린트(BLUEPRINT)</span>는 똥
+              MK엔터테인먼트가 선보이는 첫 번째 보이그룹 <span className="text-black dark:text-white font-semibold">블루프린트(BLUEPRINT)</span>는 미완성이지만 무한한 가능성을 가진 10대들의 꿈과 설계를 상징합니다.
             </p>
           </div>
           
@@ -126,12 +149,12 @@ export default function BlueprintPage() {
           </div>
         </div>
 
+        {/* 3. 멤버 리스트 */}
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 uppercase flex items-center gap-3 transition-colors">
             Members <div className="w-12 h-1 bg-blue-600 dark:bg-red-600 rounded-full transition-colors"></div>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            
             {members.map((member) => (
               <button 
                 key={member.id}
@@ -148,31 +171,45 @@ export default function BlueprintPage() {
           </div>
         </div>
 
+        {/* 4. 디스코그래피 */}
         <div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 uppercase flex items-center gap-3 transition-colors">
             Discography <div className="w-12 h-1 bg-blue-600 dark:bg-red-600 rounded-full transition-colors"></div>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="group cursor-pointer">
-              <div className="aspect-square relative overflow-hidden rounded-lg mb-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-white/5 group-hover:border-blue-500 dark:group-hover:border-red-500 transition-all shadow-sm">
-                <Image
-                  src="/images/bp_album_1.png" 
-                  alt="ZERO: The First Print"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-100 dark:opacity-80 dark:group-hover:opacity-100"
-                />
-              </div>
-              <h3 className="text-gray-900 dark:text-white font-bold truncate group-hover:text-blue-600 dark:group-hover:text-red-500 transition-colors">ZERO: The First Print</h3>
-              <p className="text-gray-500 text-sm">1st Mini Album (2026)</p>
-            </div>
+            {/* 앨범 클릭 이벤트 연결 */}
+            {albums.map((album) => (
+              <button 
+                key={album.id}
+                onClick={() => setSelectedAlbum(album)}
+                className="group cursor-pointer text-left w-full"
+              >
+                <div className="aspect-square relative overflow-hidden rounded-lg mb-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-white/5 group-hover:border-blue-500 dark:group-hover:border-red-500 transition-all shadow-sm">
+                  <Image
+                    src={album.cover}
+                    alt={album.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-100 dark:opacity-80 dark:group-hover:opacity-100"
+                  />
+                  {/* Hover 시 재생 아이콘 */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
+                    <HiPlay className="text-white w-12 h-12" />
+                  </div>
+                </div>
+                <h3 className="text-gray-900 dark:text-white font-bold truncate group-hover:text-blue-600 dark:group-hover:text-red-500 transition-colors">
+                  {album.title}
+                </h3>
+                <p className="text-gray-500 text-sm">{album.type}</p>
+              </button>
+            ))}
           </div>
         </div>
 
       </div>
 
+      {/* ============== 멤버 모달 ============== */}
       {selectedMember && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-          
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
             onClick={() => setSelectedMember(null)}
@@ -204,34 +241,30 @@ export default function BlueprintPage() {
               </div>
 
               <div className="relative z-10">
-                <h3 className="text-lg font-bold text-blue-600 dark:text-red-500 tracking-[0.3em] uppercase mb-2 animate-fadeIn delay-100">
+                <h3 className="text-lg font-bold text-blue-600 dark:text-red-500 tracking-[0.3em] uppercase mb-2">
                   {selectedMember.role}
                 </h3>
-                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 uppercase tracking-tighter mb-8 animate-fadeIn delay-200">
+                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 uppercase tracking-tighter mb-8">
                   {selectedMember.engName}
                 </h1>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10 animate-fadeIn delay-300">
-                
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10">
                 <div className="bg-gray-100 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/5">
                    <span className="block text-xs font-bold text-gray-400 mb-1">BIRTH</span>
                    <span className="text-lg font-bold text-gray-900 dark:text-white">{selectedMember.birth}</span>
                 </div>
-
                 <div className="bg-gray-100 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/5">
                    <span className="block text-xs font-bold text-gray-400 mb-1">HEIGHT</span>
                    <span className="text-lg font-bold text-gray-900 dark:text-white">{selectedMember.height}</span>
                 </div>
-
                 <div className="bg-gray-100 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/5">
                    <span className="block text-xs font-bold text-gray-400 mb-1">MBTI</span>
                    <span className="text-lg font-bold text-gray-900 dark:text-white">{selectedMember.mbti}</span>
                 </div>
-
               </div>
 
-              <div className="relative z-10 bg-blue-50 dark:bg-red-900/10 p-6 rounded-xl border-l-4 border-blue-500 dark:border-red-500 animate-fadeIn delay-500">
+              <div className="relative z-10 bg-blue-50 dark:bg-red-900/10 p-6 rounded-xl border-l-4 border-blue-500 dark:border-red-500">
                 <p className="text-gray-700 dark:text-gray-200 font-medium italic text-lg">
                   {selectedMember.quote}
                 </p>
@@ -255,6 +288,82 @@ export default function BlueprintPage() {
           </div>
         </div>
       )}
+
+      {/* ============== 앨범 모달 (새로 추가됨) ============== */}
+      {selectedAlbum && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+          
+          {/* 배경 클릭 시 닫힘 */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
+            onClick={() => setSelectedAlbum(null)}
+          ></div>
+
+          <div className="relative bg-white/90 dark:bg-[#1A1A1A]/90 backdrop-blur-xl w-full max-w-4xl h-auto rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-white/20 dark:border-white/10 animate-fadeInUp">
+            
+            <button 
+              onClick={() => setSelectedAlbum(null)}
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 transition-colors"
+            >
+              <HiX className="w-6 h-6 text-gray-800 dark:text-white" />
+            </button>
+
+            {/* 왼쪽: 앨범 커버 */}
+            <div className="w-full md:w-5/12 bg-gray-100 dark:bg-[#121212] flex items-center justify-center p-8 md:p-0">
+              <div className="relative w-64 h-64 md:w-72 md:h-72 shadow-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-white/5">
+                <Image 
+                  src={selectedAlbum.cover} 
+                  alt={selectedAlbum.title} 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* 오른쪽: 트랙리스트 및 정보 */}
+            <div className="w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center relative">
+              
+              <div className="mb-6">
+                <span className="text-blue-600 dark:text-red-500 font-bold tracking-wider text-sm uppercase mb-1 block">
+                  {selectedAlbum.type}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white leading-tight mb-2">
+                  {selectedAlbum.title}
+                </h2>
+                <span className="text-gray-500 text-sm font-medium">
+                  {selectedAlbum.date}
+                </span>
+              </div>
+
+              {/* 트랙리스트 */}
+              <div className="bg-gray-50 dark:bg-black/20 rounded-xl p-6 mb-6 overflow-y-auto max-h-[250px]">
+                <h3 className="text-xs font-bold text-gray-400 mb-4 uppercase tracking-widest">Tracklist</h3>
+                <ul className="space-y-3">
+                  {selectedAlbum.tracks.map((track, idx) => (
+                    <li key={idx} className="flex items-center gap-4 text-sm">
+                      <span className="text-gray-400 font-mono w-4">{track.num}</span>
+                      <span className={`font-bold ${track.isTitle ? 'text-blue-600 dark:text-red-500' : 'text-gray-700 dark:text-gray-300'}`}>
+                        {track.title}
+                      </span>
+                      {track.isTitle && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded border border-blue-600 dark:border-red-500 text-blue-600 dark:text-red-500 font-bold">
+                          TITLE
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                {selectedAlbum.desc}
+              </p>
+
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
