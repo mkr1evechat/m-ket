@@ -2,78 +2,73 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { HiX, HiPlay } from "react-icons/hi"; // 재생 아이콘 추가
+import { HiX, HiPlay } from "react-icons/hi";
 
-// 멤버 데이터
+// 멤버 데이터 (chatUrl 삭제됨)
 const members = [
   {
     id: 'haru',
     name: '남하루',
     engName: 'NAM HARU',
     role: 'LEAD VOCAL',
-    birth: '2008. 01. 06',
+    birth: '2008. 03. 14',
     height: '179cm',
     mbti: 'ENFP',
     image: '/images/bp_haru.png',
     desc: '부드러운 음색과 안정적인 라이브가 특징인 보컬.',
-    quote: '"너의 하루를 내 노래로 채워줄게."',
-    chatUrl: 'https://www.eve-chat.com/works/9587378d-309d-4822-bbe1-77f3a81060e6'
+    quote: '"너의 하루를 내 노래로 채워줄게."'
   },
   {
     id: 'sihun',
     name: '유시훈',
     engName: 'YU SIHUN',
     role: 'LEADER / MAIN DANCER',
-    birth: '2008. 01. 20',
+    birth: '2008. 11. 20',
     height: '182cm',
-    mbti: 'ISTJ',
+    mbti: 'ENTJ',
     image: '/images/bp_sihun.png',
     desc: '팀의 든든한 리더이자 퍼포먼스의 중심.',
-    quote: '"우리의 청사진은 이제 시작이야."',
-    chatUrl: 'https://www.eve-chat.com'
+    quote: '"우리의 청사진은 이제 시작이야."'
   },
   {
     id: 'yunwoo',
     name: '지윤우',
     engName: 'JI YUNWOO',
     role: 'SUB VOCAL',
-    birth: '2008. 02. 03',
+    birth: '2008. 05. 05',
     height: '178cm',
     mbti: 'ESFP',
     image: '/images/bp_yunwoo.png',
     desc: '팀의 활력소이자 해피바이러스 막내.',
-    quote: '"웃으면 복이 와요! 나처럼!"',
-    chatUrl: 'https://www.eve-chat.com'
+    quote: '"웃으면 복이 와요! 나처럼!"'
   },
   {
     id: 'jaeha',
     name: '서재하',
     engName: 'SEO JAEHA',
     role: 'VISUAL / SUB RAPPER',
-    birth: '2007. 01. 18',
+    birth: '2007. 09. 12',
     height: '184cm',
     mbti: 'INTP',
     image: '/images/bp_jaeha.png',
     desc: '시선을 사로잡는 비주얼과 반전 매력의 소유자.',
-    quote: '"잘생겼다는 말보다 재밌다는 말이 더 좋아."',
-    chatUrl: 'https://www.eve-chat.com'
+    quote: '"잘생겼다는 말보다 재밌다는 말이 더 좋아."'
   },
   {
     id: 'juhyeok',
     name: '강주혁',
     engName: 'KANG JUHYEOK',
     role: 'MAIN RAPPER',
-    birth: '2007. 01. 25',
+    birth: '2007. 12. 25',
     height: '183cm',
-    mbti: 'ENTJ',
+    mbti: 'ISTP',
     image: '/images/bp_juhyeok.png',
     desc: '카리스마 넘치는 랩과 묵직한 존재감.',
-    quote: '"말보다는 행동으로 보여줄게."',
-    chatUrl: 'https://www.eve-chat.com'
+    quote: '"말보다는 행동으로 보여줄게."'
   }
 ];
 
-// 앨범 데이터 (추가됨)
+// 앨범 데이터
 const albums = [
   {
     id: 'zero',
@@ -84,10 +79,10 @@ const albums = [
     desc: '블루프린트의 시작을 알리는 데뷔 앨범. 0(Zero)에서 시작하여 무한대로 뻗어나갈 소년들의 당찬 포부를 담았다.',
     tracks: [
       { num: '01', title: 'Blueprint (Intro)', isTitle: false },
-      { num: '02', title: 'ZERO', isTitle: true }, // 타이틀곡
-      { num: '03', title: '런웨이', isTitle: false },
-      { num: '04', title: '스케치', isTitle: false },
-      { num: '05', title: '한여름의 밤', isTitle: false },
+      { num: '02', title: 'ZERO', isTitle: true },
+      { num: '03', title: 'Runway', isTitle: false },
+      { num: '04', title: 'Sketch', isTitle: false },
+      { num: '05', title: 'Our Summer', isTitle: false },
     ]
   }
 ];
@@ -110,13 +105,21 @@ export default function BlueprintPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white dark:via-[#1E1F22]/20 dark:to-[#1E1F22] transition-colors duration-300"></div>
         
-        <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-center md:text-left">
-          <span className="text-blue-600 dark:text-red-500 font-bold tracking-widest uppercase mb-2 block animate-fadeIn">
-            Boy Group
-          </span>
-          <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white uppercase italic tracking-tighter drop-shadow-2xl">
-            BLUEPRINT
-          </h1>
+        {/* [수정됨] 텍스트 클릭 시 링크 이동 및 색상 변경 */}
+        <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-center md:text-left z-20">
+          <a 
+            href="https://www.eve-chat.com/works/ef196040-be07-4936-ae70-6b878dad3942"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block group cursor-pointer"
+          >
+            <span className="text-blue-600 dark:text-red-500 font-bold tracking-widest uppercase mb-2 block animate-fadeIn transition-colors">
+              Boy Group
+            </span>
+            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-red-500 uppercase italic tracking-tighter drop-shadow-2xl transition-colors duration-300">
+              BLUEPRINT
+            </h1>
+          </a>
         </div>
       </div>
 
@@ -177,7 +180,6 @@ export default function BlueprintPage() {
             Discography <div className="w-12 h-1 bg-blue-600 dark:bg-red-600 rounded-full transition-colors"></div>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {/* 앨범 클릭 이벤트 연결 */}
             {albums.map((album) => (
               <button 
                 key={album.id}
@@ -191,7 +193,6 @@ export default function BlueprintPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-100 dark:opacity-80 dark:group-hover:opacity-100"
                   />
-                  {/* Hover 시 재생 아이콘 */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
                     <HiPlay className="text-white w-12 h-12" />
                   </div>
@@ -241,15 +242,15 @@ export default function BlueprintPage() {
               </div>
 
               <div className="relative z-10">
-                <h3 className="text-lg font-bold text-blue-600 dark:text-red-500 tracking-[0.3em] uppercase mb-2">
+                <h3 className="text-lg font-bold text-blue-600 dark:text-red-500 tracking-[0.3em] uppercase mb-2 animate-fadeIn delay-100">
                   {selectedMember.role}
                 </h3>
-                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 uppercase tracking-tighter mb-8">
+                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 uppercase tracking-tighter mb-8 animate-fadeIn delay-200">
                   {selectedMember.engName}
                 </h1>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10 animate-fadeIn delay-300">
                 <div className="bg-gray-100 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/5">
                    <span className="block text-xs font-bold text-gray-400 mb-1">BIRTH</span>
                    <span className="text-lg font-bold text-gray-900 dark:text-white">{selectedMember.birth}</span>
@@ -264,7 +265,7 @@ export default function BlueprintPage() {
                 </div>
               </div>
 
-              <div className="relative z-10 bg-blue-50 dark:bg-red-900/10 p-6 rounded-xl border-l-4 border-blue-500 dark:border-red-500">
+              <div className="relative z-10 bg-blue-50 dark:bg-red-900/10 p-6 rounded-xl border-l-4 border-blue-500 dark:border-red-500 animate-fadeIn delay-500">
                 <p className="text-gray-700 dark:text-gray-200 font-medium italic text-lg">
                   {selectedMember.quote}
                 </p>
@@ -273,27 +274,16 @@ export default function BlueprintPage() {
                 </p>
               </div>
 
-              <div className="mt-8 relative z-10">
-                 <a 
-                    href={selectedMember.chatUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-blue-600 dark:border-red-500 bg-transparent text-blue-600 dark:text-red-500 font-bold text-sm tracking-widest hover:bg-blue-50 dark:hover:bg-red-500/10 transition-all duration-300"
-                 >
-                    EveChat [무검열]
-                    <span className="text-lg leading-none">↗</span>
-                 </a>
-              </div>
+              {/* [수정됨] 링크 버튼 삭제됨 */}
+
             </div>
           </div>
         </div>
       )}
 
-      {/* ============== 앨범 모달 (새로 추가됨) ============== */}
+      {/* ============== 앨범 모달 ============== */}
       {selectedAlbum && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-          
-          {/* 배경 클릭 시 닫힘 */}
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
             onClick={() => setSelectedAlbum(null)}
@@ -308,7 +298,6 @@ export default function BlueprintPage() {
               <HiX className="w-6 h-6 text-gray-800 dark:text-white" />
             </button>
 
-            {/* 왼쪽: 앨범 커버 */}
             <div className="w-full md:w-5/12 bg-gray-100 dark:bg-[#121212] flex items-center justify-center p-8 md:p-0">
               <div className="relative w-64 h-64 md:w-72 md:h-72 shadow-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-white/5">
                 <Image 
@@ -320,9 +309,7 @@ export default function BlueprintPage() {
               </div>
             </div>
 
-            {/* 오른쪽: 트랙리스트 및 정보 */}
             <div className="w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center relative">
-              
               <div className="mb-6">
                 <span className="text-blue-600 dark:text-red-500 font-bold tracking-wider text-sm uppercase mb-1 block">
                   {selectedAlbum.type}
@@ -335,7 +322,6 @@ export default function BlueprintPage() {
                 </span>
               </div>
 
-              {/* 트랙리스트 */}
               <div className="bg-gray-50 dark:bg-black/20 rounded-xl p-6 mb-6 overflow-y-auto max-h-[250px]">
                 <h3 className="text-xs font-bold text-gray-400 mb-4 uppercase tracking-widest">Tracklist</h3>
                 <ul className="space-y-3">
@@ -358,7 +344,6 @@ export default function BlueprintPage() {
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                 {selectedAlbum.desc}
               </p>
-
             </div>
           </div>
         </div>
