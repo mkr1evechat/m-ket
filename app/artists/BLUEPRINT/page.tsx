@@ -87,7 +87,7 @@ const albums = [
       { num: '02', title: 'ZERO', isTitle: true }, // 타이틀곡
       { num: '03', title: 'Runway', isTitle: false },
       { num: '04', title: 'Sketch', isTitle: false },
-      { num: '05', title: 'Our Summer', isTitle: false },
+      { num: '05', title: 'A Midsummer Night', isTitle: false },
     ]
   }
 ];
