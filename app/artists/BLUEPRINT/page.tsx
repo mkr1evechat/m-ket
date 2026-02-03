@@ -107,12 +107,12 @@ export default function BlueprintPage() {
             href="https://www.eve-chat.com/works/ef196040-be07-4936-ae70-6b878dad3942" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group inline-block"
+            className="group inline-block cursor-pointer"
           >
-            <span className="text-blue-600 dark:text-red-500 font-bold tracking-widest uppercase mb-2 block animate-fadeIn group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
+            <span className="text-blue-600 dark:text-red-500 font-bold tracking-widest uppercase mb-2 block animate-fadeIn group-hover:text-blue-500 dark:group-hover:text-red-400 transition-colors">
               Boy Group
             </span>
-            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white uppercase italic tracking-tighter drop-shadow-2xl group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">
+            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white uppercase italic tracking-tighter drop-shadow-2xl group-hover:text-blue-600 dark:group-hover:text-red-600 transition-colors duration-300">
               BLUEPRINT
             </h1>
           </a>
