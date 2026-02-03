@@ -85,9 +85,9 @@ const albums = [
     tracks: [
       { num: '01', title: 'Blueprint (Intro)', isTitle: false },
       { num: '02', title: 'ZERO', isTitle: true }, // 타이틀곡
-      { num: '03', title: 'Runway', isTitle: false },
-      { num: '04', title: 'Sketch', isTitle: false },
-      { num: '05', title: 'A Midsummer Night', isTitle: false },
+      { num: '03', title: '런웨이', isTitle: false },
+      { num: '04', title: '스케치', isTitle: false },
+      { num: '05', title: '한여름의 밤', isTitle: false },
     ]
   }
 ];
