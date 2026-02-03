@@ -4,14 +4,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { HiX, HiPlay } from "react-icons/hi";
 
-// 멤버 데이터 (chatUrl 삭제됨)
 const members = [
   {
     id: 'haru',
     name: '남하루',
     engName: 'NAM HARU',
     role: 'LEAD VOCAL',
-    birth: '2008. 03. 14',
+    birth: '2008. 01. 06',
     height: '179cm',
     mbti: 'ENFP',
     image: '/images/bp_haru.png',
@@ -23,9 +22,9 @@ const members = [
     name: '유시훈',
     engName: 'YU SIHUN',
     role: 'LEADER / MAIN DANCER',
-    birth: '2008. 11. 20',
+    birth: '2008. 01. 20',
     height: '182cm',
-    mbti: 'ENTJ',
+    mbti: 'ISTJ',
     image: '/images/bp_sihun.png',
     desc: '팀의 든든한 리더이자 퍼포먼스의 중심.',
     quote: '"우리의 청사진은 이제 시작이야."'
@@ -35,7 +34,7 @@ const members = [
     name: '지윤우',
     engName: 'JI YUNWOO',
     role: 'SUB VOCAL',
-    birth: '2008. 05. 05',
+    birth: '2008. 02. 03',
     height: '178cm',
     mbti: 'ESFP',
     image: '/images/bp_yunwoo.png',
@@ -47,7 +46,7 @@ const members = [
     name: '서재하',
     engName: 'SEO JAEHA',
     role: 'VISUAL / SUB RAPPER',
-    birth: '2007. 09. 12',
+    birth: '2007. 01. 18',
     height: '184cm',
     mbti: 'INTP',
     image: '/images/bp_jaeha.png',
@@ -59,16 +58,15 @@ const members = [
     name: '강주혁',
     engName: 'KANG JUHYEOK',
     role: 'MAIN RAPPER',
-    birth: '2007. 12. 25',
+    birth: '2007. 01. 25',
     height: '183cm',
-    mbti: 'ISTP',
+    mbti: 'ENTJ',
     image: '/images/bp_juhyeok.png',
     desc: '카리스마 넘치는 랩과 묵직한 존재감.',
     quote: '"말보다는 행동으로 보여줄게."'
   }
 ];
 
-// 앨범 데이터
 const albums = [
   {
     id: 'zero',
@@ -80,9 +78,9 @@ const albums = [
     tracks: [
       { num: '01', title: 'Blueprint (Intro)', isTitle: false },
       { num: '02', title: 'ZERO', isTitle: true },
-      { num: '03', title: 'Runway', isTitle: false },
-      { num: '04', title: 'Sketch', isTitle: false },
-      { num: '05', title: 'Our Summer', isTitle: false },
+      { num: '03', title: '런웨이', isTitle: false },
+      { num: '04', title: '스케치', isTitle: false },
+      { num: '05', title: '한여름의 밤', isTitle: false },
     ]
   }
 ];
@@ -94,7 +92,6 @@ export default function BlueprintPage() {
   return (
     <div className="min-h-screen pb-20">
       
-      {/* 1. 히어로 섹션 */}
       <div className="relative w-full h-[60vh]">
         <Image
           src="/images/bp_hs.png" 
@@ -105,18 +102,17 @@ export default function BlueprintPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white dark:via-[#1E1F22]/20 dark:to-[#1E1F22] transition-colors duration-300"></div>
         
-        {/* [수정됨] 텍스트 클릭 시 링크 이동 및 색상 변경 */}
-        <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-center md:text-left z-20">
+        <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-center md:text-left z-10">
           <a 
-            href="https://www.eve-chat.com/works/ef196040-be07-4936-ae70-6b878dad3942"
-            target="_blank"
+            href="https://www.eve-chat.com/works/ef196040-be07-4936-ae70-6b878dad3942" 
+            target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block group cursor-pointer"
+            className="group inline-block"
           >
-            <span className="text-blue-600 dark:text-red-500 font-bold tracking-widest uppercase mb-2 block animate-fadeIn transition-colors">
+            <span className="text-blue-600 dark:text-red-500 font-bold tracking-widest uppercase mb-2 block animate-fadeIn group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
               Boy Group
             </span>
-            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-red-500 uppercase italic tracking-tighter drop-shadow-2xl transition-colors duration-300">
+            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white uppercase italic tracking-tighter drop-shadow-2xl group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">
               BLUEPRINT
             </h1>
           </a>
@@ -125,7 +121,6 @@ export default function BlueprintPage() {
 
       <div className="max-w-6xl mx-auto px-6 mt-12">
         
-        {/* 2. 소개글 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 uppercase border-l-4 border-blue-600 dark:border-red-600 pl-4 transition-colors">
@@ -152,7 +147,6 @@ export default function BlueprintPage() {
           </div>
         </div>
 
-        {/* 3. 멤버 리스트 */}
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 uppercase flex items-center gap-3 transition-colors">
             Members <div className="w-12 h-1 bg-blue-600 dark:bg-red-600 rounded-full transition-colors"></div>
@@ -174,7 +168,6 @@ export default function BlueprintPage() {
           </div>
         </div>
 
-        {/* 4. 디스코그래피 */}
         <div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 uppercase flex items-center gap-3 transition-colors">
             Discography <div className="w-12 h-1 bg-blue-600 dark:bg-red-600 rounded-full transition-colors"></div>
@@ -208,7 +201,6 @@ export default function BlueprintPage() {
 
       </div>
 
-      {/* ============== 멤버 모달 ============== */}
       {selectedMember && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
           <div 
@@ -242,15 +234,15 @@ export default function BlueprintPage() {
               </div>
 
               <div className="relative z-10">
-                <h3 className="text-lg font-bold text-blue-600 dark:text-red-500 tracking-[0.3em] uppercase mb-2 animate-fadeIn delay-100">
+                <h3 className="text-lg font-bold text-blue-600 dark:text-red-500 tracking-[0.3em] uppercase mb-2">
                   {selectedMember.role}
                 </h3>
-                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 uppercase tracking-tighter mb-8 animate-fadeIn delay-200">
+                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 uppercase tracking-tighter mb-8">
                   {selectedMember.engName}
                 </h1>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10 animate-fadeIn delay-300">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10">
                 <div className="bg-gray-100 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/5">
                    <span className="block text-xs font-bold text-gray-400 mb-1">BIRTH</span>
                    <span className="text-lg font-bold text-gray-900 dark:text-white">{selectedMember.birth}</span>
@@ -265,7 +257,7 @@ export default function BlueprintPage() {
                 </div>
               </div>
 
-              <div className="relative z-10 bg-blue-50 dark:bg-red-900/10 p-6 rounded-xl border-l-4 border-blue-500 dark:border-red-500 animate-fadeIn delay-500">
+              <div className="relative z-10 bg-blue-50 dark:bg-red-900/10 p-6 rounded-xl border-l-4 border-blue-500 dark:border-red-500">
                 <p className="text-gray-700 dark:text-gray-200 font-medium italic text-lg">
                   {selectedMember.quote}
                 </p>
@@ -273,17 +265,14 @@ export default function BlueprintPage() {
                   - {selectedMember.desc}
                 </p>
               </div>
-
-              {/* [수정됨] 링크 버튼 삭제됨 */}
-
             </div>
           </div>
         </div>
       )}
 
-      {/* ============== 앨범 모달 ============== */}
       {selectedAlbum && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+          
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
             onClick={() => setSelectedAlbum(null)}
@@ -310,6 +299,7 @@ export default function BlueprintPage() {
             </div>
 
             <div className="w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center relative">
+              
               <div className="mb-6">
                 <span className="text-blue-600 dark:text-red-500 font-bold tracking-wider text-sm uppercase mb-1 block">
                   {selectedAlbum.type}
@@ -344,6 +334,7 @@ export default function BlueprintPage() {
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                 {selectedAlbum.desc}
               </p>
+
             </div>
           </div>
         </div>
