@@ -11,7 +11,7 @@ export default function HomePage() {
          - dark:text-white: 다크모드에선 흰색
       */}
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter text-gray-900 dark:text-white uppercase drop-shadow-sm dark:drop-shadow-2xl transition-colors duration-300">
-        MK ENTERTAINMENT
+        M-KET
       </h1>
       
       {/* 
