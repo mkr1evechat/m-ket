@@ -20,7 +20,7 @@ export default function HomePage() {
          - dark:text-gray-400: 다크모드에선 밝은 회색
       */}
       <p className="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl font-light transition-colors duration-300">
-        IDK
+        
       </p>
 
       {/* 
