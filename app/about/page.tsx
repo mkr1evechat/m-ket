@@ -49,7 +49,7 @@ export default function AboutPage() {
             <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
               <li>
                 <span className="font-bold mr-2">Address:</span> 
-                서울 성수동 MK타워
+                서울 MK타워
               </li>
               <li>
                 <span className="font-bold mr-2">Email:</span> 
